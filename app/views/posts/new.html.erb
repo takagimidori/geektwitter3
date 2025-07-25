@@ -1,0 +1,31 @@
+<h1>GeekTwitter</h1>
+<h3>新規Post</h3>
+<%= form_with(model: @post, local: true) do |form| %>
+
+    <div class="title">
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+    </div>
+
+    <div class="time">
+        <%= form.label :start_time %>
+        <%= form.datetime_select :start_time %>
+    </div>
+
+    <div class="content">
+        <%= form.label :content %>
+        <%= form.text_field :content %>
+    </div>
+
+    <div class="teacher">
+    <%= form.label :teacher_id, "担当教師" %>
+    <%= form.collection_select :teacher_id, @teachers, :id, :name, prompt: "教師を選択" %>
+    </div>
+
+
+    <div class="submit">
+        <%= form.submit "postする" %>
+    </div>
+
+<% end %>
+<%= link_to "Post一覧に戻る", posts_path %> 
